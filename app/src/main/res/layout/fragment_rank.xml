@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".mainflagments.RankFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/rank_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#ff10ff"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/mapFrag"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_map_24"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ImageView
+                android:id="@+id/boardFrag"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_chat_24"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ImageView
+                android:id="@+id/rankFrag"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_directions_walk_24"
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ImageView
+                android:id="@+id/profileFrag"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_assignment_ind_24"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mapFragment">
+
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.capstonefcls.mainflagments.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_boardFragment"
+            app:destination="@id/boardFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_rankFragment"
+            app:destination="@id/rankFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="com.example.capstonefcls.mainflagments.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" >
+        <action
+            android:id="@+id/action_boardFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_boardFragment_to_rankFragment"
+            app:destination="@id/rankFragment" />
+        <action
+            android:id="@+id/action_boardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.capstonefcls.mainflagments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_boardFragment"
+            app:destination="@id/boardFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_rankFragment"
+            app:destination="@id/rankFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rankFragment"
+        android:name="com.example.capstonefcls.mainflagments.RankFragment"
+        android:label="fragment_rank"
+        tools:layout="@layout/fragment_rank" >
+        <action
+            android:id="@+id/action_rankFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_rankFragment_to_boardFragment"
+            app:destination="@id/boardFragment" />
+        <action
+            android:id="@+id/action_rankFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+</navigation>
