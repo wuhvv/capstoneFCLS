@@ -54,7 +54,7 @@ public class BoardReadActivity extends AppCompatActivity {
 
         String id = getIntent().getStringExtra("id");
 
-        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
 
         findViewById(R.id.post_set_btn).setOnClickListener(new View.OnClickListener() {
             @Override
