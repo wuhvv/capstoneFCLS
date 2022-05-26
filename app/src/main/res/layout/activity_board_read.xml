@@ -5,6 +5,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/post_set_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="게시글 수정 및 삭제" />
+
     <TextView
         android:id="@+id/board_read_title"
         android:layout_width="match_parent"
@@ -46,5 +53,7 @@
         android:layout_height="300dp"
         android:layout_margin="30dp"
         />
+
+
 
 </LinearLayout>

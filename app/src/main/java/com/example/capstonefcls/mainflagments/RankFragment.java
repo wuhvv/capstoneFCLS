@@ -91,11 +91,9 @@ public class RankFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                // Log.d(TAG, document.getId() + " => " + document.getData());
+
                                 Member m = document.toObject(Member.class);
 
-
-                                // items.add(new Post(document.getData().get("첫번째 데이터").toString(),document.getData().get("두번째 데이터").toString(),"내용", "1"));
                                 items.add(m);
                                 ids.add(document.getId().toString());
                             }
@@ -105,29 +103,6 @@ public class RankFragment extends Fragment {
                             adapter = new RankListViewAdapter(items, getContext());
 
                             listview.setAdapter(adapter);
-
-
-//                            listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                                @Override
-//                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//
-////                            Intent intent = new Intent(getApplicationContext(), BoardReadActivity.class);
-////                            intent.putExtra("title", items.get(i).getTitle());
-////                            intent.putExtra("author", items.get(i).getAuthor());
-////                            intent.putExtra("content", items.get(i).getContent());
-////                            intent.putExtra("time", items.get(i).getCreatedAt());
-////                            startActivity(intent);
-//
-//
-//                                    Intent intent = new Intent(getContext(), BoardReadActivity.class);
-//                                    intent.putExtra("id", ids.get(i));
-//                                    startActivity(intent);
-//
-//
-//
-//                                }
-//                            });
 
 
                         } else {

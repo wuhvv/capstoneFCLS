@@ -102,13 +102,13 @@ public class BoardWriteActivity extends AppCompatActivity {
             String current = format.format(currentTime);
 
 
-            Post p = new Post("관리자", title, content, current);
+            Post p = new Post(user.getUid(), "관리자", title, content, current);
 
             DocumentReference PostRef = db.collection("posts").document();
             PostRef.set(p).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
-//                    Toast.makeText(BoardWriteActivity.this, "글쓰기 성공", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BoardWriteActivity.this, "글쓰기 성공", Toast.LENGTH_SHORT).show();
                 }
             })
                     .addOnFailureListener(new OnFailureListener() {

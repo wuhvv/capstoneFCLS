@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Member {
 
+    private String uid;
     private String name; // 사용자 이름
     private String profileURL; // 프로필 사진
     private int level; // 일반 사용자 or 관리자 등..
@@ -14,7 +15,8 @@ public class Member {
     public Member() {}
 
 
-    public Member(String name, String profileURL, int level, int pts) {
+    public Member(String uid, String name, String profileURL, int level, int pts) {
+        this.uid = uid;
         this.name = name;
         this.profileURL = profileURL;
         this.level = level;
@@ -24,7 +26,8 @@ public class Member {
 //        achievements.add("업적 값2");
     }
 
-    public Member(String name, int level, int pts) {
+    public Member(String uid, String name, int level, int pts) {
+        this.uid = uid;
         this.name = name;
         this.level = level;
         this.pts = pts;
@@ -33,6 +36,8 @@ public class Member {
     public Member(String name){
         this.name = name;
     }
+
+    public String getUid(){return this.uid;}
 
     public String getName(){
         return this.name;

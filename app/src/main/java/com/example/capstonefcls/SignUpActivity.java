@@ -41,12 +41,6 @@ public class SignUpActivity extends AppCompatActivity {
         findViewById(R.id.signUpButton).setOnClickListener(onClickListener);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-    }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -109,7 +103,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 Toast.makeText(SignUpActivity.this, "회원가입이 성공했습니다", Toast.LENGTH_SHORT).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
 
-                                Member m = new Member(nickname,1, 500);
+                                Member m = new Member(user.getUid(), nickname,1, 500);
                                 db.collection("members").document(user.getUid()).set(m);
 
                                 // 회원가입시 메인 액티비티로 이동

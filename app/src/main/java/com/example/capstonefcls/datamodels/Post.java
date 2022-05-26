@@ -2,6 +2,7 @@ package com.example.capstonefcls.datamodels;
 
 public class Post {
 
+    private String author_uid;
     private String author; // 작성자
     private String title; // 제목
     private String content; // 내용
@@ -10,12 +11,15 @@ public class Post {
 
     public Post() {}
 
-    public Post(String author, String title, String content, String createdAt) {
+    public Post(String author_uid, String author, String title, String content, String createdAt) {
+        this.author_uid = author_uid;
         this.author = author;
         this.content = content;
         this.title = title;
         this.createdAt = createdAt;
     }
+
+    public String getAuthor_uid(){return this.author_uid;}
 
     public String getTitle(){
         return this.title;

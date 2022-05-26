@@ -1,8 +1,13 @@
 package com.example.capstonefcls;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +23,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,6 +35,7 @@ public class BoardReadActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     FirebaseFirestore db;
+    FirebaseUser user;
 
     private static final String TAG = "BoardReadActivity";
 
@@ -43,19 +50,44 @@ public class BoardReadActivity extends AppCompatActivity {
         // Init firestore
         db = FirebaseFirestore.getInstance();
 
-//        String title = getIntent().getStringExtra("title").toString();
-//        String author = getIntent().getStringExtra("author").toString();
-//        String content = getIntent().getStringExtra("content").toString();
-//        String time = getIntent().getStringExtra("time").toString();
-//
-//        ((TextView) findViewById(R.id.board_read_title)).setText(title);
-//        ((TextView) findViewById(R.id.board_read_author)).setText(author);
-//        ((TextView) findViewById(R.id.board_read_content)).setText(content);
-//        ((TextView) findViewById(R.id.board_read_time)).setText(time);
+        user = mAuth.getCurrentUser();
 
         String id = getIntent().getStringExtra("id");
 
         Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+
+        findViewById(R.id.post_set_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View mDV = LayoutInflater.from(BoardReadActivity.this).inflate(R.layout.post_set_dialog, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(BoardReadActivity.this);
+                builder.setView(mDV).setTitle("수정/삭제");
+                AlertDialog dialogClick = builder.show();
+
+                dialogClick.findViewById(R.id.post_set_edit_btn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getApplicationContext(), "edit", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(getApplicationContext(), BoardEditActivity.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                dialogClick.findViewById(R.id.post_set_del_btn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getApplicationContext(), "delete", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+            }
+        });
+
+
 
         DocumentReference docRef = db.collection("posts").document(id);
 
@@ -67,6 +99,15 @@ public class BoardReadActivity extends AppCompatActivity {
                     if (document.exists()) {
 
                         Post p = document.toObject(Post.class);
+                        String uid = user.getUid().toString();
+
+                        if(uid != null){
+                            if(p.getAuthor_uid().equals(uid)){
+                                ((Button) findViewById(R.id.post_set_btn)).setVisibility(View.VISIBLE);
+                            }else{
+                            }
+                        }
+
 
                         ((TextView) findViewById(R.id.board_read_title)).setText(p.getTitle());
                         ((TextView) findViewById(R.id.board_read_author)).setText(p.getAuthor());
@@ -89,11 +130,6 @@ public class BoardReadActivity extends AppCompatActivity {
 
                             }
                         });
-
-
-
-
-
 
                     } else {
                         Log.d(TAG, "No such document");

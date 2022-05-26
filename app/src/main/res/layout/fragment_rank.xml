@@ -24,7 +24,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="#ff10ff"
+            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageView
@@ -45,7 +45,7 @@
                 android:id="@+id/rankFrag"
                 android:layout_weight="1"
                 android:src="@drawable/ic_baseline_directions_walk_24"
-                android:background="@color/black"
+                android:background="@color/mainColor"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
